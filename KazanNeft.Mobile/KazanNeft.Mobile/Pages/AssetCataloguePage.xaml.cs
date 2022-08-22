@@ -40,5 +40,10 @@ namespace KazanNeft.Mobile.Pages
             //Deselect Item
             ((ListView)sender).SelectedItem = null;
         }
+
+        private void btnSearch_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -17,7 +17,5 @@ namespace KazanNeft.DB.Entities
         public long ID { get; set; }
         public long AssetID { get; set; }
         public byte[] AssetPhoto1 { get; set; }
-    
-        public virtual Asset Asset { get; set; }
     }
 }

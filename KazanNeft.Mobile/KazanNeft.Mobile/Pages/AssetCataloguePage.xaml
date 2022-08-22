@@ -2,19 +2,43 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KazanNeft.Mobile.Pages.AssetCataloguePage">
-  <ListView x:Name="MyListView"
-            ItemsSource="{Binding Items}"
+    <StackLayout Orientation="Vertical">
+        <StackLayout Orientation="Horizontal">
+            <Picker x:Name="pDepartament" ItemDisplayBinding="{Binding Name}"/>
+            <Picker x:Name="pAssetGroup" ItemDisplayBinding="{Binding Name}"/>
+        </StackLayout>
+        <Entry Placeholder="Warranty date range:" IsEnabled="False"/>
+        <StackLayout Orientation="Horizontal">
+            <DatePicker x:Name="dpStart" />
+            <DatePicker x:Name="dpEnd" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal">
+            <Button x:Name="btnBook" WidthRequest="50" HeightRequest="50"/>
+            <Entry x:Name="eSearch" Placeholder="Search"/>
+            <Button x:Name="btnSearch" Text="🔎" Clicked="btnSearch_Clicked"/>
+        </StackLayout>
+        <ListView x:Name="MyListView"
             ItemTapped="Handle_ItemTapped"
             CachingStrategy="RecycleElement">
-    <!--Built in Cells-->
-    <ListView.ItemTemplate>
-        <DataTemplate>
-            <TextCell Text="{Binding .}" />
-        </DataTemplate>
-    </ListView.ItemTemplate>
-    
-    <!--Custom View Cells-->
-    <!--
+            <!--Built in Cells-->
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout Orientation="Horizontal">
+                        <Image x:Name="imgImage" Source="{Binding Image}"/>
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="{Binding AssetName}" />
+                            <Label Text="{Binding DepartamentLocation.Departament.Name}" />
+                            <Label Text="{Binding AssetSN}" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                            <Button x:Name="btnEdit" Text="✏️"/>
+                        </StackLayout>
+                    </StackLayout>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+            <!--Custom View Cells-->
+            <!--
     <ListView.ItemTemplate>
       <DataTemplate>
         <ViewCell>
@@ -28,5 +52,6 @@
       </DataTemplate>
     </ListView.ItemTemplate>
     -->
-  </ListView>
+        </ListView>
+    </StackLayout>
 </ContentPage>
